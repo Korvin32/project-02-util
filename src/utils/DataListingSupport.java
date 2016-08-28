@@ -5,8 +5,14 @@ import java.util.List;
 
 import javax.faces.event.AjaxBehaviorEvent;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public abstract class DataListingSupport<T extends Serializable> implements Serializable {
+	
     private static final long serialVersionUID = -7027863449540470122L;
+    
+    private static final Logger LOG = LoggerFactory.getLogger(DataListingSupport.class);
 
     private Integer recordCount = 0;
     private Integer totalPages = 0;
@@ -18,7 +24,8 @@ public abstract class DataListingSupport<T extends Serializable> implements Seri
     private String sortField;
 
     public DataListingSupport() {
-        setRowsPerPage(10);
+        LOG.info("CREATION of DataListingSupport!");
+    	setRowsPerPage(10);
         refresh();
     }
 
