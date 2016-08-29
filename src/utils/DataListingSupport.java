@@ -3,6 +3,7 @@ package utils;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import org.slf4j.Logger;
@@ -25,7 +26,12 @@ public abstract class DataListingSupport<T extends Serializable> implements Seri
 
     public DataListingSupport() {
         LOG.info("CREATION of DataListingSupport!");
-    	setRowsPerPage(10);
+    }
+    
+    @PostConstruct
+    public void postConstruct() {
+        LOG.info("--> postConstruct().");
+        setRowsPerPage(10);
         refresh();
     }
 
